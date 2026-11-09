@@ -13,44 +13,57 @@
 <link rel="apple-touch-icon" href="icon-192.png">
 <title>مصحفي | القرآن الكريم</title>
 <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#f3f7f4;--card:#ffffff;--gold:#c9a45c;--blue:#0d6653;--txt:#18352e;--mut:#668078}
 body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--txt)}
 body.dark{--bg:#101b18;--card:#1b2a25;--gold:#d5b66f;--blue:#3caa8c;--txt:#f1f5f2;--mut:#b3c3bc;background:#101b18}
 header{position:sticky;top:0;z-index:50;background:var(--card);display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:2px solid var(--gold)}
-header b{font-size:20px}.brand{display:flex;align-items:center;gap:9px}.brand-logo{width:42px;height:42px;object-fit:cover;border-radius:12px;border:1px solid var(--gold);box-shadow:0 2px 8px rgba(0,0,0,.12)}.icon{font-size:22px;background:#eef3f6;border:0;width:42px;height:42px;border-radius:12px;cursor:pointer}
+header b{font-size:20px}
+.brand{display:flex;align-items:center;gap:9px}
+.brand-logo{width:42px;height:42px;object-fit:cover;border-radius:12px;border:1px solid var(--gold);box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.icon{font-size:22px;background:#eef3f6;border:0;width:42px;height:42px;border-radius:12px;cursor:pointer}
 body.dark .icon{background:#2a3642;color:#fff}
 #drawer{position:fixed;top:0;right:-320px;width:300px;max-width:85vw;height:100%;background:var(--card);z-index:100;transition:.3s;box-shadow:-5px 0 20px rgba(0,0,0,.2);overflow:auto;padding:16px}
 #drawer.open{right:0}
-#overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;z-index:90}#overlay.show{display:block}
+#overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;z-index:90}
+#overlay.show{display:block}
 .drawer-top{display:flex;justify-content:space-between;align-items:center}
 .drawer-top button{border:0;background:#eef3f6;width:38px;height:38px;border-radius:10px;font-size:18px;cursor:pointer}
 h3.sec{margin:18px 0 8px;color:var(--blue);font-size:15px}
 .menu-item{display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;cursor:pointer;border:1px solid #eee;margin-bottom:6px;background:var(--bg)}
 body.dark .menu-item{border-color:#333}
-.menu-item span{font-size:20px}.toggle{margin-right:auto}
-.view{display:none;padding:14px;max-width:720px;margin:auto}.view.active{display:block}
+.menu-item span{font-size:20px}
+.toggle{margin-right:auto}
+.view{display:none;padding:14px;max-width:720px;margin:auto}
+.view.active{display:block}
 .mushaf{background:var(--card);border:2px solid var(--gold);border-radius:18px;padding:14px;min-height:560px}
 .mushaf-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ddd;padding-bottom:8px;margin-bottom:10px;font-weight:900}
 .ayah-text{font-family:'Amiri Quran',serif;font-size:27px;line-height:2.15;text-align:justify}
 .ayah-num{display:inline-block;background:#fff3c4;border:1px solid var(--gold);border-radius:50%;width:34px;height:34px;text-align:center;line-height:32px;font-size:16px;margin:0 4px;color:#7a5c00;cursor:pointer}
 .ayah-num:hover{background:var(--gold);color:#fff}
-.ayah-word{cursor:pointer}.ayah-word:hover{background:#fff3c4}
+.ayah-word{cursor:pointer}
+.ayah-word:hover{background:#fff3c4}
 .play-btn{display:inline-block;background:#e8f4ff;border:1px solid #0a6fb5;border-radius:50%;width:28px;height:28px;text-align:center;line-height:26px;font-size:13px;cursor:pointer;margin:0 2px}
-.playing{background:#ffeb3b !important}
+.playing{background:#ffeb3b!important}
 .hidden-ayah{filter:blur(6px);cursor:pointer}
 .mushaf-foot{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
 .btn{background:var(--blue);color:#fff;border:0;padding:11px 18px;border-radius:12px;font-weight:900;cursor:pointer}
 .btn.light{background:#eef3f6;color:#222}
 .pager{display:flex;gap:8px;justify-content:center;margin:12px 0;flex-wrap:wrap}
 .pager input{width:90px;padding:10px;border-radius:10px;border:1px solid #ccc;text-align:center}
-.search-box{display:flex;gap:8px;margin-bottom:12px}.search-box input{flex:1;padding:13px;border-radius:12px;border:1px solid #ccc}
+.search-box{display:flex;gap:8px;margin-bottom:12px}
+.search-box input{flex:1;padding:13px;border-radius:12px;border:1px solid #ccc}
 .card{background:var(--card);border:1px solid #eee;border-radius:14px;padding:14px;margin-bottom:10px}
 body.dark .card{border-color:#333}
-.tabs{display:flex;background:#eee;border-radius:12px;padding:4px;margin-bottom:12px}body.dark .tabs{background:#222}
-.tabs button{flex:1;padding:11px;border:0;border-radius:10px;font-weight:900;cursor:pointer;background:transparent}.tabs button.on{background:var(--blue);color:#fff}
-.surah-row{display:flex;justify-content:space-between;align-items:center;padding:13px 6px;border-bottom:1px solid #eee;cursor:pointer}.surah-row b{font-size:18px}.surah-row small{color:var(--mut)}
+.tabs{display:flex;background:#eee;border-radius:12px;padding:4px;margin-bottom:12px}
+body.dark .tabs{background:#222}
+.tabs button{flex:1;padding:11px;border:0;border-radius:10px;font-weight:900;cursor:pointer;background:transparent}
+.tabs button.on{background:var(--blue);color:#fff}
+.surah-row{display:flex;justify-content:space-between;align-items:center;padding:13px 6px;border-bottom:1px solid #eee;cursor:pointer}
+.surah-row b{font-size:18px}
+.surah-row small{color:var(--mut)}
 .duaa{white-space:pre-line;line-height:1.9;font-size:16px}
 .counter{font-size:90px;text-align:center;font-weight:900}
 .bigbtn{width:100%;padding:16px;border:0;border-radius:16px;background:var(--gold);font-weight:900;font-size:18px;cursor:pointer;margin-top:10px}
@@ -63,26 +76,45 @@ audio{width:100%;margin-top:8px}
 .tafsir-text{line-height:1.9;font-size:16px;white-space:pre-line}
 </style>
 </head>
+
 <body>
 <div id="overlay" onclick="closeDrawer()"></div>
-<header><button class="icon" onclick="openDrawer()" aria-label="فتح القائمة">☰</button><div class="brand"><img class="brand-logo" src="logo.png" alt="شعار مصحفي"><b>مصحفي</b></div><div><button class="icon" onclick="showView('search')" aria-label="بحث">🔍</button> <button class="icon" onclick="toggleDark()" aria-label="الوضع الليلي">🌙</button></div></header>
+
+<header>
+<button class="icon" onclick="openDrawer()" aria-label="فتح القائمة">☰</button>
+<div class="brand"><img class="brand-logo" src="logo.png" alt="شعار مصحفي"><b>مصحفي</b></div>
+<div>
+<button class="icon" onclick="showView('search')" aria-label="بحث">🔍</button>
+<button class="icon" onclick="toggleDark()" aria-label="الوضع الليلي">🌙</button>
+</div>
+</header>
+
 <aside id="drawer">
-<div class="drawer-top"><b>القائمة</b><div><button onclick="showView('search')">🔍</button> <button onclick="closeDrawer()">✕</button></div></div>
+<div class="drawer-top">
+<b>القائمة</b>
+<div>
+<button onclick="showView('search')">🔍</button>
+<button onclick="closeDrawer()">✕</button>
+</div>
+</div>
+
 <p style="margin-top:10px;color:var(--mut);font-size:13px">اضغط رقم الآية لحفظ مكانك • اضغط الآية للتفسير • اضغط ▶ لسماعها</p>
+
 <h3 class="sec">الأدوات والخواص</h3>
 <div class="menu-item" onclick="go('mushaf')">📖 <b>مصحف</b></div>
-<div class="menu-item" onclick="go('offline')">📥 <b>التنزيلات والعمل دون إنترنت</b></div>
 <div class="menu-item" onclick="go('index')">📑 <b>الفهرس</b></div>
 <div class="menu-item" onclick="go('bookmarks')">🔖 <b>العلامات المرجعية</b></div>
 <div class="menu-item" onclick="go('favorites')">⭐ <b>مختارات المصحف</b></div>
 <div class="menu-item" onclick="go('memorize')">🧠 <b>التحفيظ</b></div>
 <div class="menu-item" onclick="go('duas')">🤲 <b>الدعاء</b></div>
 <div class="menu-item" onclick="go('benefits')">💡 <b>الفوائد</b></div>
+
 <h3 class="sec">العرض والتخصيص</h3>
 <div class="menu-item">🔄 <span>التصفح التلقائي</span><input class="toggle" type="checkbox" id="autoScroll" onchange="toggleAuto()"></div>
 <div class="menu-item">🌙 <span>القراءة الليلية</span><input class="toggle" type="checkbox" id="nightChk" onchange="toggleDark()"></div>
 <div class="menu-item">🙈 <span>خاصية إخفاء الآيات</span><input class="toggle" type="checkbox" id="hideChk" onchange="toggleHide()"></div>
 <div class="menu-item">💡 <span>عدم إطفاء الشاشة</span><input class="toggle" type="checkbox" onchange="keepAwake(this.checked)"></div>
+
 <h3 class="sec">أقسام أخرى</h3>
 <div class="menu-item" onclick="go('prayer')">🕋 <b>أوقات الصلاة</b></div>
 <div class="menu-item" onclick="go('azkar')">🌅 <b>أذكار الصباح والمساء</b></div>
@@ -91,14 +123,29 @@ audio{width:100%;margin-top:8px}
 </aside>
 
 <div id="view-mushaf" class="view active">
-<div style="background:#e8f4ff;border-radius:12px;padding:10px;margin-bottom:10px;font-size:14px">📍 آخر مكان وصلتله: <b id="lastPosText">لا يوجد بعد</b> <button class="btn light" style="padding:6px 10px;float:left" onclick="goToLastPos()">العودة لمكاني</button></div>
+<div style="background:#e8f4ff;border-radius:12px;padding:10px;margin-bottom:10px;font-size:14px">
+📍 آخر مكان وصلتله:
+<b id="lastPosText">لا يوجد بعد</b>
+<button class="btn light" style="padding:6px 10px;float:left" onclick="goToLastPos()">العودة لمكاني</button>
+</div>
+
 <div class="mushaf">
-<div class="mushaf-head"><span id="mhSurah">سورة الفاتحة</span><span><small id="mhJuz">الجزء ١</small></span><span id="mhPage">صفحة ١</span></div>
+<div class="mushaf-head">
+<span id="mhSurah">سورة الفاتحة</span>
+<span><small id="mhJuz">الجزء ١</small></span>
+<span id="mhPage">صفحة ١</span>
+</div>
 <div style="text-align:center;font-weight:900;margin-bottom:10px">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
 <div class="ayah-text" id="ayahs">جاري تحميل المصحف...</div>
 <div class="mushaf-foot"><span>۞</span><b id="footPage">١</b><span>👁️</span></div>
 </div>
-<div class="pager"><button class="btn light" onclick="changePage(-1)">‹ السابق</button><input id="pageInput" type="number" value="1" min="1" max="604"><button class="btn" onclick="gotoPage()">اذهب</button><button class="btn light" onclick="changePage(1)">التالي ›</button></div>
+
+<div class="pager">
+<button class="btn light" onclick="changePage(-1)">‹ السابق</button>
+<input id="pageInput" type="number" value="1" min="1" max="604">
+<button class="btn" onclick="gotoPage()">اذهب</button>
+<button class="btn light" onclick="changePage(1)">التالي ›</button>
+</div>
 
 <div class="card">
 <b>🎧 الاستماع - اختار الشيخ</b>
@@ -106,77 +153,105 @@ audio{width:100%;margin-top:8px}
 <option value="ar.alafasy">مشاري راشد العفاسي</option>
 <option value="ar.abdulbasitmurattal">عبد الباسط عبد الصمد - مرتل</option>
 <option value="ar.husary">محمود خليل الحصري</option>
-<option value="ar.aymanswoaid">أيمن سويد</option>
-<option value="ar.azizalili">عبد العزيز الزهراني - مجود</option>
 </select>
+
 <audio id="audio" controls preload="none"></audio>
 <p id="audioStatus" style="font-size:13px;color:#777;margin-top:6px">جاهز - اضغط ▶ بجانب أي آية أو زر تشغيل الصفحة</p>
+
 <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
 <button class="btn" onclick="playPageAudio()">▶ تشغيل الصفحة كاملة</button>
 <button class="btn light" onclick="stopAudio()">⏹ إيقاف</button>
 <button class="btn light" onclick="bookmarkCurrent()">🔖 حفظ علامة</button>
 <button class="btn light" onclick="addFav()">⭐ مفضلة</button>
 </div>
-<small>الصوت يحتاج إنترنت. إذا ما اشتغل شيخ، جرب العفاسي أولاً لأنه الأسرع.</small>
+<small>الصوت يحتاج إنترنت. إذا لم يعمل قارئ، جرّب العفاسي أولاً.</small>
 </div>
 </div>
 
-
-<div id="view-offline" class="view">
-  <h2>📥 التنزيلات والعمل دون إنترنت</h2>
-  <div class="card">
-    <b>حالة تجهيز التطبيق</b>
-    <p id="offlineStatus" style="margin:8px 0;color:var(--mut)">نزّل المحتوى وأنت متصل بالإنترنت مرة واحدة لاستخدامه لاحقاً دون اتصال.</p>
-    <div style="height:10px;background:#e8ece9;border-radius:20px;overflow:hidden"><div id="offlineProgress" style="height:100%;width:0;background:var(--blue);transition:width .2s"></div></div>
-    <small id="offlineProgressText">0%</small>
-  </div>
-  <div class="card">
-    <b>📖 القرآن الكريم كاملاً</b>
-    <p class="duaa" style="margin:7px 0">تنزيل صفحات المصحف الـ604 وفهرس السور إلى ذاكرة الهاتف لتصفحها والبحث فيها دون إنترنت.</p>
-    <button class="btn" id="downloadQuranBtn" onclick="downloadQuranOffline()">تنزيل / استكمال تنزيل القرآن كاملاً</button>
-    <button class="btn light" onclick="deleteQuranOffline()">حذف نسخة القرآن المحفوظة</button>
-    <p id="quranDownloadStatus" style="font-size:13px;margin-top:8px"></p>
-  </div>
-  <div class="card">
-    <b>📚 التفسير</b>
-    <p class="duaa" style="margin:7px 0">احفظ التفسير الميسر والجلالين وابن كثير على الجهاز لاستخدامها دون اتصال.</p>
-    <button class="btn" onclick="downloadTafsirOffline()">تنزيل التفاسير الثلاثة</button>
-    <p id="tafsirDownloadStatus" style="font-size:13px;margin-top:8px"></p>
-  </div>
-  <div class="card">
-    <b>🎧 تنزيل التلاوات للاستماع دون إنترنت</b>
-    <p class="duaa" style="margin:7px 0">اختر القارئ ثم نزّل السور التي تريدها. ملفات الصوت كبيرة، لذلك يفضّل تنزيلها عبر Wi-Fi والتأكد من توفر مساحة كافية.</p>
-    <select id="offlineReciter" onchange="renderOfflineAudioList()" style="width:100%;padding:12px;border-radius:10px;margin:8px 0">
-      <option value="ar.alafasy">مشاري راشد العفاسي</option>
-      <option value="ar.abdulbasitmurattal">عبد الباسط عبد الصمد - مرتل</option>
-      <option value="ar.husary">محمود خليل الحصري</option>
-      <option value="ar.aymanswoaid">أيمن سويد</option>
-      <option value="ar.azizalili">عبد العزيز الزهراني - مجود</option>
-    </select>
-    <div id="offlineAudioList"></div>
-    <p id="audioDownloadStatus" style="font-size:13px;margin-top:8px"></p>
-  </div>
-  <div class="card">
-    <b>ماذا سيعمل دون إنترنت؟</b>
-    <p class="duaa">بعد اكتمال التنزيل: قراءة القرآن وفهرسه والبحث فيه، العلامات والمفضلة والسبحة والأذكار والأدعية، التفاسير التي تم تنزيلها، والسور الصوتية التي تم تنزيلها. مواقيت الصلاة تعرض آخر بيانات محفوظة حتى يتوفر اتصال لتحديثها.</p>
-  </div>
+<div id="view-search" class="view">
+<h2>🔍 البحث</h2>
+<div class="search-box">
+<input id="q" placeholder="اكتب كلمة من آية...">
+<button class="btn" onclick="doSearch()">بحث</button>
+</div>
+<div id="searchRes"></div>
 </div>
 
-<div id="view-search" class="view"><h2>🔍 البحث</h2><div class="search-box"><input id="q" placeholder="اكتب كلمة من آية..."><button class="btn" onclick="doSearch()">بحث</button></div><div id="searchRes"></div></div>
-<div id="view-index" class="view"><h2>الفهرس</h2><div class="tabs"><button id="tabSurah" class="on" onclick="setTab('surah')">سورة</button><button id="tabJuz" onclick="setTab('juz')">أجزاء</button></div><div id="indexList"></div></div>
-<div id="view-bookmarks" class="view"><h2>🔖 العلامات المرجعية</h2><div id="bmList"></div><button class="btn light" onclick="clearBm()">مسح الكل</button></div>
-<div id="view-favorites" class="view"><h2>⭐ مختارات المصحف</h2><div id="favList"></div></div>
-<div id="view-memorize" class="view"><h2>🧠 التحفيظ</h2><div class="card">فعّل إخفاء الآيات من القائمة، ثم اضغط على أي آية مخفية لتظهر.<br><br><button class="btn" onclick="go('mushaf');document.getElementById('hideChk').checked=true;toggleHide()">ابدأ التحفيظ</button></div></div>
-<div id="view-benefits" class="view"><h2>💡 الفوائد</h2><div class="card">• خيركم من تعلم القرآن وعلمه.<br>• اقرأ القرآن فإنه يأتي شفيعاً لأصحابه.<br>• صفحة واحدة يومياً = ختمة في أقل من سنتين.</div></div>
-<div id="view-duas" class="view"><h2>🤲 الأدعية - 17 دعاء</h2><div id="duasList"></div></div>
-<div id="view-ruqyah" class="view"><h2>🛡️ الرقية الشرعية</h2><div class="card duaa" id="ruqyahText"></div></div>
-<div id="view-prayer" class="view"><h2>🕋 أوقات الصلاة - غزة</h2><div class="card" id="prayerBox">جاري الجلب...</div></div>
-<div id="view-azkar" class="view"><h2>🌅 أذكار الصباح والمساء</h2><div class="tabs"><button class="on" id="azM" onclick="showAzkar('morning')">الصباح</button><button id="azE" onclick="showAzkar('evening')">المساء</button></div><div id="azkarList"></div></div>
-<div id="view-tasbeeh" class="view"><h2>📿 السبحة</h2><div class="card"><div style="display:flex;gap:6px;flex-wrap:wrap" id="tasbeehBtns"></div><div class="counter" id="count">0</div><p style="text-align:center" id="currentZikr">سبحان الله</p><button class="bigbtn" onclick="inc()">اضغط للتسبيح +1</button><button class="btn light" style="width:100%;margin-top:8px" onclick="resetCount()">تصفير</button></div></div>
+<div id="view-index" class="view">
+<h2>الفهرس</h2>
+<div class="tabs">
+<button id="tabSurah" class="on" onclick="setTab('surah')">سورة</button>
+<button id="tabJuz" onclick="setTab('juz')">أجزاء</button>
+</div>
+<div id="indexList"></div>
+</div>
+
+<div id="view-bookmarks" class="view">
+<h2>🔖 العلامات المرجعية</h2>
+<div id="bmList"></div>
+<button class="btn light" onclick="clearBm()">مسح الكل</button>
+</div>
+
+<div id="view-favorites" class="view">
+<h2>⭐ مختارات المصحف</h2>
+<div id="favList"></div>
+</div>
+
+<div id="view-memorize" class="view">
+<h2>🧠 التحفيظ</h2>
+<div class="card">
+فعّل إخفاء الآيات من القائمة، ثم اضغط على أي آية مخفية لتظهر.
+<br><br>
+<button class="btn" onclick="go('mushaf');document.getElementById('hideChk').checked=true;toggleHide()">ابدأ التحفيظ</button>
+</div>
+</div>
+
+<div id="view-benefits" class="view">
+<h2>💡 الفوائد</h2>
+<div class="card">• خيركم من تعلم القرآن وعلمه.<br>• اقرأ القرآن فإنه يأتي شفيعاً لأصحابه.<br>• صفحة واحدة يومياً = ختمة في أقل من سنتين.</div>
+</div>
+
+<div id="view-duas" class="view">
+<h2>🤲 الأدعية - 17 دعاء</h2>
+<div id="duasList"></div>
+</div>
+
+<div id="view-ruqyah" class="view">
+<h2>🛡️ الرقية الشرعية</h2>
+<div class="card duaa" id="ruqyahText"></div>
+</div>
+
+<div id="view-prayer" class="view">
+<h2>🕋 أوقات الصلاة - غزة</h2>
+<div class="card" id="prayerBox">جاري الجلب...</div>
+</div>
+
+<div id="view-azkar" class="view">
+<h2>🌅 أذكار الصباح والمساء</h2>
+<div class="tabs">
+<button class="on" id="azM" onclick="showAzkar('morning')">الصباح</button>
+<button id="azE" onclick="showAzkar('evening')">المساء</button>
+</div>
+<div id="azkarList"></div>
+</div>
+
+<div id="view-tasbeeh" class="view">
+<h2>📿 السبحة</h2>
+<div class="card">
+<div style="display:flex;gap:6px;flex-wrap:wrap" id="tasbeehBtns"></div>
+<div class="counter" id="count">0</div>
+<p style="text-align:center" id="currentZikr">سبحان الله</p>
+<button class="bigbtn" onclick="inc()">اضغط للتسبيح +1</button>
+<button class="btn light" style="width:100%;margin-top:8px" onclick="resetCount()">تصفير</button>
+</div>
+</div>
 
 <div id="tafsirModal" onclick="if(event.target==this)closeTafsir()">
 <div class="tafsir-box">
-<div style="display:flex;justify-content:space-between"><b>📖 تفسير الآية</b><button onclick="closeTafsir()" style="border:0;background:#eee;width:32px;height:32px;border-radius:8px;cursor:pointer">✕</button></div>
+<div style="display:flex;justify-content:space-between">
+<b>📖 تفسير الآية</b>
+<button onclick="closeTafsir()" style="border:0;background:#eee;width:32px;height:32px;border-radius:8px;cursor:pointer">✕</button>
+</div>
 <div class="tafsir-ayah" id="tafsirAyah"></div>
 <div style="display:flex;gap:6px;margin:10px 0;flex-wrap:wrap">
 <button class="btn" id="btnMuyassar" onclick="loadTafsir('muyassar')">التفسير الميسر</button>
@@ -184,86 +259,17 @@ audio{width:100%;margin-top:8px}
 <button class="btn light" id="btnKathir" onclick="loadTafsir('kathir')">ابن كثير</button>
 </div>
 <div class="tafsir-text" id="tafsirText">جاري تحميل التفسير...</div>
-<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="btn light" onclick="saveAyahFromTafsir()">🔖 حفظ هاي الآية</button><button class="btn" onclick="closeTafsir()">إغلاق</button></div>
+<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+<button class="btn light" onclick="saveAyahFromTafsir()">🔖 حفظ هاي الآية</button>
+<button class="btn" onclick="closeTafsir()">إغلاق</button>
 </div>
 </div>
-
+</div>
 <script>
-
-// قاعدة بيانات محلية لحفظ صفحات القرآن والتفاسير على الجهاز.
-const DB_NAME = 'MushafiOfflineDB';
-const DB_VERSION = 1;
-let mushafiDB = null;
-function openMushafiDB(){
-  return new Promise((resolve,reject)=>{
-    if(mushafiDB){resolve(mushafiDB);return;}
-    const req=indexedDB.open(DB_NAME,DB_VERSION);
-    req.onupgradeneeded=()=>{
-      const db=req.result;
-      if(!db.objectStoreNames.contains('pages')) db.createObjectStore('pages');
-      if(!db.objectStoreNames.contains('meta')) db.createObjectStore('meta');
-      if(!db.objectStoreNames.contains('tafsir')) db.createObjectStore('tafsir');
-    };
-    req.onsuccess=()=>{mushafiDB=req.result;resolve(mushafiDB)};
-    req.onerror=()=>reject(req.error);
-  });
-}
-async function dbPut(store,key,value){
-  const db=await openMushafiDB();
-  return new Promise((resolve,reject)=>{
-    const tx=db.transaction(store,'readwrite');
-    tx.objectStore(store).put(value,key);
-    tx.oncomplete=()=>resolve(true);tx.onerror=()=>reject(tx.error);
-  });
-}
-async function dbGet(store,key){
-  const db=await openMushafiDB();
-  return new Promise((resolve,reject)=>{
-    const req=db.transaction(store,'readonly').objectStore(store).get(key);
-    req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);
-  });
-}
-async function dbGetAllKeys(store){
-  const db=await openMushafiDB();
-  return new Promise((resolve,reject)=>{
-    const req=db.transaction(store,'readonly').objectStore(store).getAllKeys();
-    req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);
-  });
-}
-async function dbClear(store){
-  const db=await openMushafiDB();
-  return new Promise((resolve,reject)=>{
-    const tx=db.transaction(store,'readwrite');tx.objectStore(store).clear();
-    tx.oncomplete=()=>resolve(true);tx.onerror=()=>reject(tx.error);
-  });
-}
-async function dbDelete(store,key){
-  const db=await openMushafiDB();
-  return new Promise((resolve,reject)=>{
-    const tx=db.transaction(store,'readwrite');tx.objectStore(store).delete(key);
-    tx.oncomplete=()=>resolve(true);tx.onerror=()=>reject(tx.error);
-  });
-}
-function setOfflineProgress(done,total,label){
-  const pct=total?Math.round(done/total*100):0;
-  const bar=document.getElementById('offlineProgress');
-  const txt=document.getElementById('offlineProgressText');
-  const status=document.getElementById('offlineStatus');
-  if(bar)bar.style.width=pct+'%';
-  if(txt)txt.textContent=pct+'% ('+done+' / '+total+')';
-  if(status)status.textContent=label||'جارٍ التنزيل...';
-}
-async function getAudioCache(){return caches.open('mushafi-audio-v1')}
-async function isSurahAudioSaved(surah,reciter){
-  try{return !!(await (await getAudioCache()).match(audioSurahUrl(surah,reciter)))}catch(e){return false}
-}
-function audioSurahUrl(surah,reciter){
-  return `https://cdn.islamic.network/quran/audio-surah/128/${reciter}/${surah}.mp3`;
-}
-
 let curPage = parseInt(localStorage.getItem('lastPage')||'1');
 let hideMode=false, autoInt=null, surahs=[], currentTafsirAyah=null;
 let audioQueue=[], audioIndex=0, isPlayingPage=false;
+
 let duas=[
 ["دعاء الهم والفرج","اللهم إني عبدك ابن عبدك ابن أمتك، ناصيتي بيدك، ماضٍ فيَّ حكمك، عدلٌ فيَّ قضاؤك، أسألك بكل اسم هو لك سميت به نفسك أن تجعل القرآن ربيع قلبي ونور صدري وجلاء حزني وذهاب همي"],
 ["دعاء الرزق","اللهم ارزقني رزقاً حلالاً طيباً مباركاً فيه"],
@@ -283,278 +289,651 @@ let duas=[
 ["دعاء دخول المسجد","أعوذ بالله العظيم وبوجهه الكريم"],
 ["دعاء ختم القرآن","اللهم اجعل القرآن ربيع قلوبنا"]
 ];
-let azkarData={morning:[["آية الكرسي","اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ...","1"],["المعوذات","قل هو الله أحد + الفلق + الناس","3"],["أصبحنا وأصبح الملك لله","أصبحنا وأصبح الملك لله...","1"],["سيد الاستغفار","اللهم أنت ربي لا إله إلا أنت...","1"],["سبحان الله وبحمده","سبحان الله وبحمده","100"]],evening:[["آية الكرسي","اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ...","1"],["المعوذات","قل هو الله أحد + الفلق + الناس","3"],["أمسينا وأمسى الملك لله","أمسينا وأمسى الملك لله...","1"],["أعوذ بكلمات الله التامات","أعوذ بكلمات الله التامات من شر ما خلق","3"],["بسم الله الذي لا يضر","بسم الله الذي لا يضر مع اسمه شيء...","3"]]};
-let zikrs=["سبحان الله","الحمد لله","الله أكبر","لا إله إلا الله","أستغفر الله","اللهم صل على محمد"];
+
+let azkarData={
+morning:[
+["آية الكرسي","اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ...","1"],
+["المعوذات","قل هو الله أحد + الفلق + الناس","3"],
+["أصبحنا وأصبح الملك لله","أصبحنا وأصبح الملك لله...","1"],
+["سيد الاستغفار","اللهم أنت ربي لا إله إلا أنت...","1"],
+["سبحان الله وبحمده","سبحان الله وبحمده","100"]
+],
+evening:[
+["آية الكرسي","اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ...","1"],
+["المعوذات","قل هو الله أحد + الفلق + الناس","3"],
+["أمسينا وأمسى الملك لله","أمسينا وأمسى الملك لله...","1"],
+["أعوذ بكلمات الله التامات","أعوذ بكلمات الله التامات من شر ما خلق","3"],
+["بسم الله الذي لا يضر","بسم الله الذي لا يضر مع اسمه شيء...","3"]
+]
+};
+
+let zikrs=[
+"سبحان الله",
+"الحمد لله",
+"الله أكبر",
+"لا إله إلا الله",
+"أستغفر الله",
+"اللهم صل على محمد"
+];
+
 let count=parseInt(localStorage.getItem('tasbeeh')||'0');
 
-function openDrawer(){document.getElementById('drawer').classList.add('open');document.getElementById('overlay').classList.add('show')}
-function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('show')}
-function go(v){closeDrawer();showView(v)}
-function showView(v){document.querySelectorAll('.view').forEach(e=>e.classList.remove('active'));document.getElementById('view-'+v).classList.add('active');window.scrollTo(0,0);if(v=='bookmarks')renderBm();if(v=='favorites')renderFav();if(v=='index')renderIndex();if(v=='duas')renderDuas();if(v=='prayer')loadPrayer();if(v=='azkar')showAzkar('morning');if(v=='offline')renderOfflineAudioList()}
-function toggleDark(){document.body.classList.toggle('dark');let d=document.body.classList.contains('dark');localStorage.setItem('dark',d);document.getElementById('nightChk').checked=d}
-function toggleHide(){hideMode=document.getElementById('hideChk').checked;renderPageCache()}
-function toggleAuto(){if(autoInt){clearInterval(autoInt);autoInt=null}else{autoInt=setInterval(()=>changePage(1),20000)}}
-async function keepAwake(on){try{if(on)await navigator.wakeLock.request('screen');}catch(e){}}
+function openDrawer(){
+document.getElementById('drawer').classList.add('open');
+document.getElementById('overlay').classList.add('show');
+}
+
+function closeDrawer(){
+document.getElementById('drawer').classList.remove('open');
+document.getElementById('overlay').classList.remove('show');
+}
+
+function go(v){
+closeDrawer();
+showView(v);
+}
+
+function showView(v){
+document.querySelectorAll('.view').forEach(e=>e.classList.remove('active'));
+document.getElementById('view-'+v).classList.add('active');
+window.scrollTo(0,0);
+
+if(v=='bookmarks')renderBm();
+if(v=='favorites')renderFav();
+if(v=='index')renderIndex();
+if(v=='duas')renderDuas();
+if(v=='prayer')loadPrayer();
+if(v=='azkar')showAzkar('morning');
+}
+
+function toggleDark(){
+document.body.classList.toggle('dark');
+let d=document.body.classList.contains('dark');
+localStorage.setItem('dark',d);
+document.getElementById('nightChk').checked=d;
+}
+
+function toggleHide(){
+hideMode=document.getElementById('hideChk').checked;
+renderPageCache();
+}
+
+function toggleAuto(){
+if(autoInt){
+clearInterval(autoInt);
+autoInt=null;
+}else{
+autoInt=setInterval(()=>changePage(1),20000);
+}
+}
+
+async function keepAwake(on){
+try{
+if(on && navigator.wakeLock){
+await navigator.wakeLock.request('screen');
+}
+}catch(e){}
+}
+
 if(localStorage.getItem('dark')=='true')toggleDark();
 
-// حفظ مكانك
-function saveAyahPosition(globalNum, surahName, ayahInSurah, page){
-  let pos={global:globalNum,surah:surahName,ayah:ayahInSurah,page:page};
-  localStorage.setItem('lastAyah',JSON.stringify(pos));localStorage.setItem('lastPage',page);
-  let b=JSON.parse(localStorage.getItem('bm')||'[]');b.unshift({page:page,surah:surahName+' - آية '+ayahInSurah});localStorage.setItem('bm',JSON.stringify(b.slice(0,20)));
-  updateLastPosUI();
-  let t=document.createElement('div');t.textContent='✅ تم حفظ مكانك: '+surahName+' آية '+ayahInSurah;
-  t.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:12px 18px;border-radius:12px;z-index:300;font-weight:700';document.body.appendChild(t);setTimeout(()=>t.remove(),2500);
-}
-function updateLastPosUI(){let p=JSON.parse(localStorage.getItem('lastAyah')||'null');document.getElementById('lastPosText').textContent=p? p.surah+' - آية '+p.ayah+' (صفحة '+p.page+')':'لا يوجد بعد'}
-function goToLastPos(){let p=JSON.parse(localStorage.getItem('lastAyah')||'null');if(!p)return alert('لسا ما حفظت أي مكان');loadPage(p.page);go('mushaf')}
-function saveAyahFromTafsir(){if(!currentTafsirAyah)return;saveAyahPosition(currentTafsirAyah.number,currentTafsirAyah.surah.name,currentTafsirAyah.numberInSurah,curPage)}
+// حفظ مكان القراءة
+function saveAyahPosition(globalNum,surahName,ayahInSurah,page){
+let pos={
+global:globalNum,
+surah:surahName,
+ayah:ayahInSurah,
+page:page
+};
 
-// تفسير
-function openTafsir(globalNum, ayahText, surahName, ayahInSurah){
-  currentTafsirAyah={number:globalNum,surah:{name:surahName},numberInSurah:ayahInSurah,text:ayahText};
-  document.getElementById('tafsirAyah').textContent=ayahText+' ﴿'+ayahInSurah+'﴾';
-  document.getElementById('tafsirModal').classList.add('show');loadTafsir('muyassar');
+localStorage.setItem('lastAyah',JSON.stringify(pos));
+localStorage.setItem('lastPage',page);
+
+let b=JSON.parse(localStorage.getItem('bm')||'[]');
+b.unshift({page:page,surah:surahName+' - آية '+ayahInSurah});
+localStorage.setItem('bm',JSON.stringify(b.slice(0,20)));
+
+updateLastPosUI();
+
+let t=document.createElement('div');
+t.textContent='✅ تم حفظ مكانك: '+surahName+' آية '+ayahInSurah;
+t.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:12px 18px;border-radius:12px;z-index:300;font-weight:700';
+document.body.appendChild(t);
+setTimeout(()=>t.remove(),2500);
 }
-function closeTafsir(){document.getElementById('tafsirModal').classList.remove('show')}
+
+function updateLastPosUI(){
+let p=JSON.parse(localStorage.getItem('lastAyah')||'null');
+document.getElementById('lastPosText').textContent=
+p?p.surah+' - آية '+p.ayah+' (صفحة '+p.page+')':'لا يوجد بعد';
+}
+
+function goToLastPos(){
+let p=JSON.parse(localStorage.getItem('lastAyah')||'null');
+if(!p)return alert('لسا ما حفظت أي مكان');
+loadPage(p.page);
+go('mushaf');
+}
+
+function saveAyahFromTafsir(){
+if(!currentTafsirAyah)return;
+saveAyahPosition(
+currentTafsirAyah.number,
+currentTafsirAyah.surah.name,
+currentTafsirAyah.numberInSurah,
+curPage
+);
+}
+
+// التفسير
+function openTafsir(globalNum,ayahText,surahName,ayahInSurah){
+currentTafsirAyah={
+number:globalNum,
+surah:{name:surahName},
+numberInSurah:ayahInSurah,
+text:ayahText
+};
+
+document.getElementById('tafsirAyah').textContent=
+ayahText+' ﴿'+ayahInSurah+'﴾';
+
+document.getElementById('tafsirModal').classList.add('show');
+loadTafsir('muyassar');
+}
+
+function closeTafsir(){
+document.getElementById('tafsirModal').classList.remove('show');
+}
+
 async function loadTafsir(type){
-  document.getElementById('btnMuyassar').className=type=='muyassar'?'btn':'btn light';
-  document.getElementById('btnJalalayn').className=type=='jalalayn'?'btn':'btn light';
-  document.getElementById('btnKathir').className=type=='kathir'?'btn':'btn light';
-  let edition=type=='muyassar'?'ar.muyassar':type=='jalalayn'?'ar.jalalayn':'ar.ibnkathir';
-  document.getElementById('tafsirText').textContent='جاري تحميل التفسير...';
-  try{
-    let saved=await dbGet('tafsir',type);
-    if(saved && saved[currentTafsirAyah.number-1]){
-      document.getElementById('tafsirText').textContent=saved[currentTafsirAyah.number-1].text;
-      return;
-    }
-    let one=await dbGet('tafsir',type+'_ayah_'+currentTafsirAyah.number);
-    if(one){document.getElementById('tafsirText').textContent=one;return;}
-  }catch(e){}
-  try{
-    let r=await fetch(`https://api.alquran.cloud/v1/ayah/${currentTafsirAyah.number}/${edition}`);
-    if(!r.ok)throw new Error('network');
-    let j=await r.json();
-    document.getElementById('tafsirText').textContent=j.data.text;
-    try{await dbPut('tafsir',type+'_ayah_'+currentTafsirAyah.number,j.data.text)}catch(e){}
-  }catch(e){document.getElementById('tafsirText').textContent='هذا التفسير غير محفوظ على الجهاز. اتصل بالإنترنت أو نزّل التفاسير من شاشة التنزيلات.'}
+document.getElementById('btnMuyassar').className=type=='muyassar'?'btn':'btn light';
+document.getElementById('btnJalalayn').className=type=='jalalayn'?'btn':'btn light';
+document.getElementById('btnKathir').className=type=='kathir'?'btn':'btn light';
+
+let edition=type=='muyassar'?'ar.muyassar':
+type=='jalalayn'?'ar.jalalayn':'ar.ibnkathir';
+
+document.getElementById('tafsirText').textContent='جاري تحميل التفسير...';
+
+try{
+let r=await fetch(`https://api.alquran.cloud/v1/ayah/${currentTafsirAyah.number}/${edition}`);
+let j=await r.json();
+document.getElementById('tafsirText').textContent=j.data.text;
+}catch(e){
+document.getElementById('tafsirText').textContent='التفسير يحتاج إنترنت';
 }
 
-// ===== الصوت - الإصلاح هنا =====
+// نظام الصوت المحسّن
+const AUDIO_BASE='https://cdn.islamic.network/quran/audio/128';
+
 function getAudioUrl(globalNum){
-  let rec=document.getElementById('reciter').value;
-  // هذا هو الرابط الصحيح لكل آية
-  return `https://cdn.islamic.network/quran/audio/128/${rec}/${globalNum}.mp3`;
+let rec=document.getElementById('reciter').value;
+return `${AUDIO_BASE}/${rec}/${globalNum}.mp3`;
 }
-function playSingleAyah(globalNum, el){
-  stopAudio();
-  let audio=document.getElementById('audio');
-  audio.src=getAudioUrl(globalNum);
-  document.getElementById('audioStatus').textContent='جاري تشغيل الآية... إذا لم يشتغل، تأكد من الإنترنت';
-  audio.play().then(()=>{document.getElementById('audioStatus').textContent='يتم التشغيل الآن...';if(el)el.classList.add('playing')}).catch(()=>{document.getElementById('audioStatus').textContent='تعذر التشغيل، جرب شيخ آخر أو تأكد من النت';alert('تعذر تشغيل الصوت. جرب العفاسي وتأكد أن الإنترنت شغال.')});
-  audio.onended=()=>{document.getElementById('audioStatus').textContent='انتهى';if(el)el.classList.remove('playing')};
+
+function playSingleAyah(globalNum,el){
+stopAudio();
+
+let audio=document.getElementById('audio');
+audio.src=getAudioUrl(globalNum);
+
+document.getElementById('audioStatus').textContent='جاري تحميل الآية...';
+
+audio.onended=()=>{
+document.getElementById('audioStatus').textContent='انتهى تشغيل الآية';
+if(el)el.classList.remove('playing');
+};
+
+audio.onerror=()=>{
+document.getElementById('audioStatus').textContent='تعذر تحميل صوت هذا القارئ. جرّب العفاسي.';
+if(el)el.classList.remove('playing');
+};
+
+audio.play().then(()=>{
+document.getElementById('audioStatus').textContent='يتم تشغيل الآية الآن';
+if(el)el.classList.add('playing');
+}).catch(()=>{
+document.getElementById('audioStatus').textContent='تعذر التشغيل. تأكد من الإنترنت وجرب قارئاً آخر.';
+});
 }
+
 function playPageAudio(){
-  let d=pageCache[curPage];if(!d)return alert('حمّل الصفحة أولاً');
-  stopAudio();isPlayingPage=true;
-  audioQueue=d.ayahs.map(a=>a.number);audioIndex=0;
-  document.getElementById('audioStatus').textContent='تشغيل الصفحة كاملة... آية 1 من '+audioQueue.length;
-  playNextInQueue();
+let d=pageCache[curPage];
+if(!d)return alert('حمّل الصفحة أولاً');
+
+stopAudio();
+isPlayingPage=true;
+audioQueue=d.ayahs.map(a=>a.number);
+audioIndex=0;
+
+document.getElementById('audioStatus').textContent='تشغيل الصفحة كاملة...';
+playNextInQueue();
 }
+
 function playNextInQueue(){
-  if(!isPlayingPage||audioIndex>=audioQueue.length){isPlayingPage=false;document.getElementById('audioStatus').textContent='انتهت الصفحة';return}
-  let audio=document.getElementById('audio');
-  audio.src=getAudioUrl(audioQueue[audioIndex]);
-  document.getElementById('audioStatus').textContent='تشغيل آية '+(audioIndex+1)+' من '+audioQueue.length;
-  audio.play().catch(()=>{document.getElementById('audioStatus').textContent='تعذر التشغيل، جرب شيخ آخر'});
-  audio.onended=()=>{audioIndex++;playNextInQueue()};
+if(!isPlayingPage || audioIndex>=audioQueue.length){
+isPlayingPage=false;
+document.getElementById('audioStatus').textContent='انتهت الصفحة';
+return;
 }
-function stopAudio(){isPlayingPage=false;let audio=document.getElementById('audio');audio.pause();audio.src='';document.getElementById('audioStatus').textContent='تم الإيقاف';document.querySelectorAll('.playing').forEach(e=>e.classList.remove('playing'))}
 
-let pageCache={};
+let audio=document.getElementById('audio');
+audio.src=getAudioUrl(audioQueue[audioIndex]);
+
+document.getElementById('audioStatus').textContent=
+'تشغيل الآية '+(audioIndex+1)+' من '+audioQueue.length;
+
+audio.onended=()=>{
+audioIndex++;
+playNextInQueue();
+};
+
+audio.onerror=()=>{
+isPlayingPage=false;
+document.getElementById('audioStatus').textContent=
+'تعذر تحميل إحدى الآيات. جرّب قارئاً آخر.';
+};
+
+audio.play().catch(()=>{
+isPlayingPage=false;
+document.getElementById('audioStatus').textContent=
+'تعذر تشغيل الصوت. تحقق من اتصال الإنترنت.';
+});
+}
+
+function stopAudio(){
+isPlayingPage=false;
+let audio=document.getElementById('audio');
+if(audio){
+audio.pause();
+audio.removeAttribute('src');
+audio.load();
+}
+
+document.getElementById('audioStatus').textContent='تم الإيقاف';
+document.querySelectorAll('.playing').forEach(e=>e.classList.remove('playing'));
+}
+  let pageCache={};
+
 async function loadPage(p){
- curPage=p;localStorage.setItem('lastPage',p);document.getElementById('pageInput').value=p;stopAudio();
- if(pageCache[p]){renderPageCache();return}
- try{let offline=await dbGet('pages',p);if(offline){pageCache[p]=offline;renderPageCache();return;}}catch(e){}
- let c=localStorage.getItem('page_'+p);
- if(c){pageCache[p]=JSON.parse(c);renderPageCache();return;}
- try{
-   let r=await fetch(`https://api.alquran.cloud/v1/page/${p}/quran-uthmani`);
-   if(!r.ok)throw new Error('network');
-   let j=await r.json();pageCache[p]=j.data;
-   try{await dbPut('pages',p,j.data)}catch(e){}
-   try{localStorage.setItem('page_'+p,JSON.stringify(j.data))}catch(e){}
-   renderPageCache();
- }catch(e){document.getElementById('ayahs').innerHTML='هذه الصفحة غير محفوظة على الجهاز. افتح شاشة التنزيلات واحفظ القرآن كاملاً أثناء الاتصال بالإنترنت.'}
+curPage=p;
+localStorage.setItem('lastPage',p);
+document.getElementById('pageInput').value=p;
+stopAudio();
+
+if(pageCache[p]){
+renderPageCache();
+return;
 }
+
+try{
+let r=await fetch(`https://api.alquran.cloud/v1/page/${p}/quran-uthmani`);
+let j=await r.json();
+
+if(!j.data)throw new Error('تعذر تحميل الصفحة');
+
+pageCache[p]=j.data;
+localStorage.setItem('page_'+p,JSON.stringify(j.data));
+renderPageCache();
+
+}catch(e){
+let c=localStorage.getItem('page_'+p);
+
+if(c){
+pageCache[p]=JSON.parse(c);
+renderPageCache();
+}else{
+document.getElementById('ayahs').innerHTML='لا يوجد اتصال بالإنترنت لتحميل هذه الصفحة.';
+}
+}
+}
+
 function renderPageCache(){
- let d=pageCache[curPage];if(!d)return;let ayahs=d.ayahs;let first=ayahs[0];
- document.getElementById('mhSurah').textContent='سورة '+first.surah.name.replace('سورة ','');
- document.getElementById('mhJuz').textContent='الجزء '+toAr(first.juz);
- document.getElementById('mhPage').textContent='صفحة '+toAr(curPage);
- document.getElementById('footPage').textContent=toAr(curPage);
- let html=ayahs.map(a=>{
-   let t=a.text.replace('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ','');
-   let safe=t.replace(/'/g,"\\'").replace(/"/g,'&quot;');
-   let cls=hideMode?'hidden-ayah':'';
-   return `<span class="${cls}"><span class="ayah-word" onclick="openTafsir(${a.number},'${safe}','${first.surah.name}',${a.numberInSurah})">${t}</span> <span class="play-btn" onclick="event.stopPropagation();playSingleAyah(${a.number},this)" title="اسمع هاي الآية">▶</span> <span class="ayah-num" onclick="event.stopPropagation();saveAyahPosition(${a.number},'${first.surah.name}',${a.numberInSurah},${curPage})" title="اضغط لحفظ مكانك">${toAr(a.numberInSurah)}</span></span> `;
- }).join('');
- document.getElementById('ayahs').innerHTML=html;
+let d=pageCache[curPage];
+if(!d)return;
+
+let ayahs=d.ayahs;
+let first=ayahs[0];
+
+document.getElementById('mhSurah').textContent='سورة '+first.surah.name.replace('سورة ','');
+document.getElementById('mhJuz').textContent='الجزء '+toAr(first.juz);
+document.getElementById('mhPage').textContent='صفحة '+toAr(curPage);
+document.getElementById('footPage').textContent=toAr(curPage);
+
+let html=ayahs.map(a=>{
+let t=a.text.replace('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ','');
+
+let safe=t
+.replace(/\\/g,'\\\\')
+.replace(/'/g,"\\'")
+.replace(/"/g,'&quot;')
+.replace(/\n/g,' ');
+
+let safeSurah=first.surah.name
+.replace(/\\/g,'\\\\')
+.replace(/'/g,"\\'");
+
+let cls=hideMode?'hidden-ayah':'';
+
+return `
+<span class="${cls}">
+<span class="ayah-word"
+onclick="openTafsir(${a.number},'${safe}','${safeSurah}',${a.numberInSurah})">
+${t}
+</span>
+
+<span class="play-btn"
+onclick="event.stopPropagation();playSingleAyah(${a.number},this)"
+title="استمع للآية">▶</span>
+
+<span class="ayah-num"
+onclick="event.stopPropagation();saveAyahPosition(${a.number},'${safeSurah}',${a.numberInSurah},${curPage})"
+title="حفظ مكان القراءة">
+${toAr(a.numberInSurah)}
+</span>
+</span>
+`;
+}).join(' ');
+
+document.getElementById('ayahs').innerHTML=html;
 }
-function toAr(n){return String(n).replace(/[0-9]/g,d=>'٠١٢٣٤٥٦٧٨٩'[d])}
-function changePage(d){let n=Math.min(604,Math.max(1,curPage+d));loadPage(n)}
-function gotoPage(){let n=parseInt(document.getElementById('pageInput').value)||1;loadPage(Math.min(604,Math.max(1,n)))}
-function bookmarkCurrent(){let b=JSON.parse(localStorage.getItem('bm')||'[]');b.unshift({page:curPage,surah:document.getElementById('mhSurah').textContent});localStorage.setItem('bm',JSON.stringify(b));alert('تم حفظ العلامة')}
-function addFav(){let b=JSON.parse(localStorage.getItem('fav')||'[]');b.unshift({page:curPage,surah:document.getElementById('mhSurah').textContent});localStorage.setItem('fav',JSON.stringify(b));alert('تمت الإضافة للمفضلة')}
-function renderBm(){let b=JSON.parse(localStorage.getItem('bm')||'[]');document.getElementById('bmList').innerHTML=b.length?b.map(x=>`<div class="card"><b>${x.surah}</b> - صفحة ${x.page} <button class="btn" style="float:left" onclick="loadPage(${x.page});go('mushaf')">اذهب</button></div>`).join(''):'<p>لا توجد علامات بعد</p>'}
-function renderFav(){let b=JSON.parse(localStorage.getItem('fav')||'[]');document.getElementById('favList').innerHTML=b.length?b.map(x=>`<div class="card"><b>${x.surah}</b> - صفحة ${x.page} <button class="btn" style="float:left" onclick="loadPage(${x.page});go('mushaf')">اذهب</button></div>`).join(''):'<p>لا توجد مفضلة بعد</p>'}
-function clearBm(){localStorage.removeItem('bm');renderBm()}
+
+function toAr(n){
+return String(n).replace(/[0-9]/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
+}
+
+function changePage(d){
+let n=Math.min(604,Math.max(1,curPage+d));
+loadPage(n);
+}
+
+function gotoPage(){
+let n=parseInt(document.getElementById('pageInput').value)||1;
+loadPage(Math.min(604,Math.max(1,n)));
+}
+
+function bookmarkCurrent(){
+let b=JSON.parse(localStorage.getItem('bm')||'[]');
+
+b.unshift({
+page:curPage,
+surah:document.getElementById('mhSurah').textContent
+});
+
+localStorage.setItem('bm',JSON.stringify(b));
+alert('تم حفظ العلامة المرجعية بنجاح');
+}
+
+function addFav(){
+let b=JSON.parse(localStorage.getItem('fav')||'[]');
+
+b.unshift({
+page:curPage,
+surah:document.getElementById('mhSurah').textContent
+});
+
+localStorage.setItem('fav',JSON.stringify(b));
+alert('تمت الإضافة إلى المفضلة ⭐');
+}
+
+function renderBm(){
+let b=JSON.parse(localStorage.getItem('bm')||'[]');
+
+document.getElementById('bmList').innerHTML=b.length
+?b.map(x=>`
+<div class="card">
+<b>${x.surah}</b> - صفحة ${toAr(x.page)}
+<button class="btn" style="float:left"
+onclick="loadPage(${x.page});go('mushaf')">
+اذهب
+</button>
+</div>
+`).join('')
+:'<p>لا توجد علامات مرجعية حتى الآن.</p>';
+}
+
+function renderFav(){
+let b=JSON.parse(localStorage.getItem('fav')||'[]');
+
+document.getElementById('favList').innerHTML=b.length
+?b.map(x=>`
+<div class="card">
+<b>${x.surah}</b> - صفحة ${toAr(x.page)}
+<button class="btn" style="float:left"
+onclick="loadPage(${x.page});go('mushaf')">
+اذهب
+</button>
+</div>
+`).join('')
+:'<p>لا توجد آيات في المفضلة حتى الآن.</p>';
+}
+
+function clearBm(){
+localStorage.removeItem('bm');
+renderBm();
+}
+
 async function loadSurahs(){
- try{const saved=await dbGet('meta','surahs');if(saved && saved.length){surahs=saved;renderIndex();return;}}catch(e){}
- try{
-   let r=await fetch('https://api.alquran.cloud/v1/meta');if(!r.ok)throw new Error('network');
-   let j=await r.json();surahs=j.data.surahs.references;try{await dbPut('meta','surahs',surahs)}catch(e){}renderIndex();
- }catch(e){document.getElementById('indexList').innerHTML='<p>فهرس السور غير محفوظ. اتصل بالإنترنت ثم نزّل القرآن من شاشة التنزيلات.</p>'}
+try{
+let r=await fetch('https://api.alquran.cloud/v1/meta');
+let j=await r.json();
+
+surahs=j.data.surahs.references;
+renderIndex();
+
+}catch(e){
+surahs=[
+{number:1,name:'سورة الفاتحة',numberOfAyahs:7,revelationType:'Meccan'},
+{number:2,name:'سورة البقرة',numberOfAyahs:286,revelationType:'Medinan'}
+];
+
+renderIndex();
 }
-function renderIndex(){let list=document.getElementById('indexList');let tab=document.getElementById('tabSurah').classList.contains('on')?'surah':'juz';if(tab=='juz'){list.innerHTML=Array.from({length:30},(_,i)=>`<div class="surah-row" onclick="loadPage(${Math.floor(i*20)+1});go('mushaf')"><b>الجزء ${toAr(i+1)}</b><small>صفحة ${toAr(Math.floor(i*20)+1)} ›</small></div>`).join('');return}list.innerHTML=surahs.map(s=>`<div class="surah-row" onclick="goToSurah(${s.number})"><div><b>${toAr(s.number)} - ${s.name}</b><br><small>${s.revelationType=='Meccan'?'مكية':'مدنية'} - آياتها ${toAr(s.numberOfAyahs)}</small></div><small>‹</small></div>`).join('')}
+}
+
+function renderIndex(){
+let list=document.getElementById('indexList');
+
+let tab=document.getElementById('tabSurah').classList.contains('on')
+?'surah':'juz';
+
+if(tab=='juz'){
+list.innerHTML=Array.from({length:30},(_,i)=>`
+<div class="surah-row"
+onclick="loadPage(${Math.floor(i*20)+1});go('mushaf')">
+<b>الجزء ${toAr(i+1)}</b>
+<small>صفحة ${toAr(Math.floor(i*20)+1)} ›</small>
+</div>
+`).join('');
+
+return;
+}
+
+list.innerHTML=surahs.map(s=>`
+<div class="surah-row" onclick="goToSurah(${s.number})">
+<div>
+<b>${toAr(s.number)} - ${s.name}</b>
+<br>
+<small>
+${s.revelationType=='Meccan'?'مكية':'مدنية'}
+- آياتها ${toAr(s.numberOfAyahs)}
+</small>
+</div>
+<small>‹</small>
+</div>
+`).join('');
+}
+
 async function goToSurah(n){
- const s=surahs.find(x=>x.number===n);
- if(s && s.startPage){loadPage(s.startPage);go('mushaf');return;}
- if(s && s.ayahs && s.ayahs.length && s.ayahs[0].page){loadPage(s.ayahs[0].page);go('mushaf');return;}
- try{let r=await fetch(`https://api.alquran.cloud/v1/surah/${n}`);if(!r.ok)throw new Error('network');let j=await r.json();loadPage(j.data.ayahs[0].page);go('mushaf')}
- catch(e){alert('بيانات الانتقال إلى السورة غير متاحة. نزّل القرآن كاملاً أولاً.')}
+try{
+let r=await fetch(`https://api.alquran.cloud/v1/surah/${n}`);
+let j=await r.json();
+
+let page=j.data.ayahs[0].page;
+
+loadPage(page);
+go('mushaf');
+
+}catch(e){
+alert('تعذر فتح السورة. تأكد من اتصال الإنترنت.');
 }
-function setTab(t){document.getElementById('tabSurah').classList.toggle('on',t=='surah');document.getElementById('tabJuz').classList.toggle('on',t=='juz');renderIndex()}
+}
+
+function setTab(t){
+document.getElementById('tabSurah').classList.toggle('on',t=='surah');
+document.getElementById('tabJuz').classList.toggle('on',t=='juz');
+renderIndex();
+}
+
 async function doSearch(){
- let q=document.getElementById('q').value.trim();if(!q)return;
- document.getElementById('searchRes').innerHTML='جاري البحث في النسخة المحفوظة...';
- const norm=s=>(s||'').replace(/[ًٌٍَُِّْـٰٱ]/g,'').replace(/أ|إ|آ/g,'ا');
- try{
-   let keys=await dbGetAllKeys('pages'), matches=[];
-   for(const key of keys){
-     const page=await dbGet('pages',key);
-     (page.ayahs||[]).forEach(a=>{if(norm(a.text).includes(norm(q)))matches.push({page:key,text:a.text,surah:a.surah.name,number:a.numberInSurah});});
-     if(matches.length>=20)break;
-   }
-   if(matches.length){
-     document.getElementById('searchRes').innerHTML=matches.slice(0,20).map(m=>`<div class="card" onclick="loadPage(${m.page});go('mushaf')"><b>${m.surah} - آية ${toAr(m.number)} - صفحة ${toAr(m.page)}</b><p style="font-family:'Amiri Quran';font-size:22px">${m.text}</p></div>`).join('');return;
-   }
-   if(keys.length>=604){document.getElementById('searchRes').innerHTML='<p>لا توجد نتائج في القرآن المحفوظ.</p>';return;}
- }catch(e){}
- try{
-   let r=await fetch(`https://api.alquran.cloud/v1/search/${encodeURIComponent(q)}/all/quran-uthmani`);if(!r.ok)throw new Error('network');
-   let j=await r.json();let matches=j.data.matches||[];
-   document.getElementById('searchRes').innerHTML=matches.slice(0,20).map(m=>`<div class="card" onclick="loadPage(${m.page||1});go('mushaf')"><b>${m.surah.name} - صفحة ${m.page||''}</b><p style="font-family:'Amiri Quran';font-size:22px">${m.text}</p></div>`).join('')||'<p>لا توجد نتائج</p>';
- }catch(e){document.getElementById('searchRes').innerHTML='البحث دون إنترنت يتطلب تنزيل صفحات القرآن الـ604 أولاً.'}
-}
-function renderDuas(){document.getElementById('duasList').innerHTML=duas.map(d=>`<div class="card"><b>🤲 ${d[0]}</b><p class="duaa">${d[1]}</p></div>`).join('')}
-document.getElementById('ruqyahText').textContent=`الرقية الشرعية:\n\n1- الفاتحة 7 مرات\n2- آية الكرسي\n3- خواتيم البقرة\n4- الإخلاص والفلق والناس 3 مرات\n5- بسم الله الذي لا يضر...\n6- أعوذ بكلمات الله التامات...`;
-function showAzkar(type){document.getElementById('azM').classList.toggle('on',type=='morning');document.getElementById('azE').classList.toggle('on',type=='evening');document.getElementById('azkarList').innerHTML=azkarData[type].map(a=>`<div class="card"><b>${a[0]}</b> <span class="pill">تكرار ${a[2]}</span><p class="duaa">${a[1]}</p></div>`).join('')}
-async function loadPrayer(){
- const box=document.getElementById('prayerBox');
- const render=t=>box.innerHTML=`الفجر: ${t.Fajr}<br>الشروق: ${t.Sunrise}<br>الظهر: ${t.Dhuhr}<br>العصر: ${t.Asr}<br>المغرب: ${t.Maghrib}<br>العشاء: ${t.Isha}`;
- try{const cached=await dbGet('meta','prayer');if(cached){render(cached.timings);box.innerHTML+='<p style="font-size:12px;color:var(--mut);margin-top:8px">آخر مواقيت محفوظة؛ تحتاج إنترنت للتحديث اليومي.</p>';}}catch(e){}
- try{
-   let r=await fetch('https://api.aladhan.com/v1/timingsByCity?city=Gaza&country=Palestine&method=5');if(!r.ok)throw new Error('network');
-   let j=await r.json();render(j.data.timings);await dbPut('meta','prayer',{date:j.data.date.gregorian.date,timings:j.data.timings});
- }catch(e){if(!box.innerHTML)box.textContent='لا توجد مواقيت محفوظة. اتصل بالإنترنت مرة واحدة لتحديثها.'}
-}
-function renderTasbeeh(){document.getElementById('tasbeehBtns').innerHTML=zikrs.map(z=>`<button class="btn light" onclick="setZikr('${z}')">${z}</button>`).join('');document.getElementById('count').textContent=count}
-function setZikr(z){count=0;document.getElementById('currentZikr').textContent=z;document.getElementById('count').textContent=0;localStorage.setItem('tasbeeh',0)}
-function inc(){count++;document.getElementById('count').textContent=count;localStorage.setItem('tasbeeh',count);if(navigator.vibrate)navigator.vibrate(20)}
-function resetCount(){count=0;localStorage.setItem('tasbeeh',0);renderTasbeeh()}
+let q=document.getElementById('q').value.trim();
 
-async function downloadQuranOffline(){
- const btn=document.getElementById('downloadQuranBtn');btn.disabled=true;btn.textContent='جارٍ تنزيل القرآن...';
- const status=document.getElementById('quranDownloadStatus');
- try{
-   const metaRes=await fetch('https://api.alquran.cloud/v1/meta');if(!metaRes.ok)throw new Error('تعذر تنزيل الفهرس');
-   const meta=await metaRes.json();surahs=meta.data.surahs.references;await dbPut('meta','surahs',surahs);renderIndex();
-   for(let p=1;p<=604;p++){
-     let pageData=await dbGet('pages',p);
-     if(!pageData){
-       const r=await fetch(`https://api.alquran.cloud/v1/page/${p}/quran-uthmani`);if(!r.ok)throw new Error('تعذر تنزيل صفحة '+p);
-       const j=await r.json();pageData=j.data;await dbPut('pages',p,pageData);
-     }
-     (pageData.ayahs||[]).forEach(a=>{
-       if(a.numberInSurah===1){
-         const found=surahs.find(x=>x.number===a.surah.number);
-         if(found)found.startPage=p;
-       }
-     });
-     setOfflineProgress(p,604,'جارٍ حفظ صفحات القرآن: '+p+' من 604');
-     status.textContent='تم حفظ '+p+' من 604 صفحة';
-   }
-   await dbPut('meta','surahs',surahs);
-   status.textContent='اكتمل تنزيل القرآن الكريم: 604 صفحة.';alert('تم حفظ القرآن الكريم كاملاً على هذا الجهاز.');
- }catch(e){status.textContent='توقف التنزيل: '+e.message+'. افحص اتصال الإنترنت ثم أعد المحاولة؛ الصفحات المكتملة ستبقى محفوظة.'}
- finally{btn.disabled=false;btn.textContent='تنزيل / استكمال تنزيل القرآن كاملاً';}
+if(!q)return;
+
+document.getElementById('searchRes').innerHTML='جاري البحث...';
+
+try{
+let r=await fetch(
+`https://api.alquran.cloud/v1/search/${encodeURIComponent(q)}/all/quran-uthmani`
+);
+
+let j=await r.json();
+let matches=j.data.matches||[];
+
+document.getElementById('searchRes').innerHTML=
+matches.slice(0,20).map(m=>`
+<div class="card"
+onclick="loadPage(${m.page||1});go('mushaf')">
+<b>${m.surah.englishName} - صفحة ${m.page||''}</b>
+<p style="font-family:'Amiri Quran';font-size:22px;line-height:2">
+${m.text}
+</p>
+</div>
+`).join('')||'<p>لا توجد نتائج مطابقة.</p>';
+
+}catch(e){
+document.getElementById('searchRes').innerHTML='البحث يحتاج إلى اتصال بالإنترنت.';
 }
-async function deleteQuranOffline(){
- if(!confirm('هل تريد حذف صفحات القرآن المحفوظة؟'))return;
- await dbClear('pages');await dbDelete('meta','surahs');pageCache={};surahs=[];
- document.getElementById('quranDownloadStatus').textContent='تم حذف البيانات المحفوظة.';
-}
-async function downloadTafsirOffline(){
- const status=document.getElementById('tafsirDownloadStatus');status.textContent='جارٍ تنزيل التفاسير...';
- const editions=[['muyassar','ar.muyassar'],['jalalayn','ar.jalalayn'],['kathir','ar.ibnkathir']];
- try{
-   for(let i=0;i<editions.length;i++){
-     const [key,edition]=editions[i];const r=await fetch(`https://api.alquran.cloud/v1/quran/${edition}`);
-     if(!r.ok)throw new Error('تعذر تنزيل '+edition);
-     const j=await r.json();await dbPut('tafsir',key,j.data.ayahs);status.textContent='تم حفظ '+(i+1)+' من 3 تفاسير...';
-   }
-   status.textContent='اكتمل حفظ التفاسير الثلاثة على الجهاز.';alert('تم تنزيل التفاسير الثلاثة.');
- }catch(e){status.textContent='تعذر إكمال التنزيل: '+e.message+'. يمكنك إعادة المحاولة.'}
-}
-async function renderOfflineAudioList(){
- const list=document.getElementById('offlineAudioList');if(!list)return;
- const rec=document.getElementById('offlineReciter').value;
- list.innerHTML='<p>جارٍ فحص الملفات المحفوظة...</p>';
- const names=surahs.length?surahs:Array.from({length:114},(_,i)=>({number:i+1,name:'سورة '+(i+1)}));
- const rows=[];
- for(const s of names){
-   const saved=await isSurahAudioSaved(s.number,rec);
-   rows.push(`<div class="surah-row"><div><b>${s.name}</b><br><small>السورة ${toAr(s.number)}</small></div><div style="display:flex;gap:5px;flex-wrap:wrap"><button class="btn" style="padding:7px 10px" onclick="downloadSurahAudio(${s.number})">${saved?'إعادة تنزيل':'تنزيل'}</button>${saved?`<button class="btn light" style="padding:7px 10px" onclick="playOfflineSurah(${s.number})">▶ تشغيل</button><button class="btn light" style="padding:7px 10px" onclick="deleteSurahAudio(${s.number})">حذف</button>`:''}</div></div>`);
- }
- list.innerHTML=rows.join('');
-}
-async function downloadSurahAudio(n){
- const rec=document.getElementById('offlineReciter').value;const status=document.getElementById('audioDownloadStatus');
- status.textContent='جارٍ تنزيل سورة '+n+'... اترك التطبيق مفتوحاً حتى يكتمل الحفظ.';
- try{
-   const url=audioSurahUrl(n,rec);const response=await fetch(url);if(!response.ok)throw new Error('audio unavailable');
-   const cache=await getAudioCache();await cache.put(url,response.clone());
-   status.textContent='تم حفظ السورة '+n+' للاستماع دون إنترنت.';await renderOfflineAudioList();
- }catch(e){status.textContent='تعذر تنزيل السورة. تأكد من الإنترنت والمساحة المتاحة ثم أعد المحاولة.'}
-}
-async function deleteSurahAudio(n){
- const rec=document.getElementById('offlineReciter').value;const cache=await getAudioCache();
- await cache.delete(audioSurahUrl(n,rec));await renderOfflineAudioList();
-}
-async function playOfflineSurah(n){
- const rec=document.getElementById('offlineReciter').value;const url=audioSurahUrl(n,rec);
- const saved=await (await getAudioCache()).match(url);if(!saved){alert('نزّل السورة أولاً.');return;}
- const blob=await saved.blob();const audio=document.getElementById('audio');
- if(window.currentOfflineAudioUrl)URL.revokeObjectURL(window.currentOfflineAudioUrl);
- window.currentOfflineAudioUrl=URL.createObjectURL(blob);audio.src=window.currentOfflineAudioUrl;
- audio.play().catch(()=>alert('تعذر تشغيل الملف المحفوظ.'));
- document.getElementById('audioStatus').textContent='تشغيل سورة '+n+' من النسخة المحفوظة دون إنترنت.';
- go('mushaf');
 }
 
-renderDuas();renderTasbeeh();loadSurahs();loadPage(curPage);loadPrayer();updateLastPosUI();
-document.addEventListener('keydown',e=>{if(e.key=='ArrowLeft')changePage(1);if(e.key=='ArrowRight')changePage(-1)});
-let touchX=0;document.addEventListener('touchstart',e=>touchX=e.touches[0].clientX);document.addEventListener('touchend',e=>{let dx=e.changedTouches[0].clientX-touchX;if(dx<-60)changePage(1);if(dx>60)changePage(-1)});
+function renderDuas(){
+document.getElementById('duasList').innerHTML=
+duas.map(d=>`
+<div class="card">
+<b>🤲 ${d[0]}</b>
+<p class="duaa">${d[1]}</p>
+</div>
+`).join('');
+}
 
-// تسجيل عامل الخدمة لتجهيز التطبيق للتثبيت والعمل بواجهة أساسية دون اتصال
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./service-worker.js').catch(err => {
-      console.warn('تعذر تسجيل Service Worker:', err);
-    });
-  });
+document.getElementById('ruqyahText').textContent=
+`الرقية الشرعية:
+
+1- سورة الفاتحة.
+2- آية الكرسي.
+3- خواتيم سورة البقرة.
+4- سورة الإخلاص والفلق والناس.
+5- بسم الله الذي لا يضر مع اسمه شيء في الأرض ولا في السماء وهو السميع العليم.
+6- أعوذ بكلمات الله التامات من شر ما خلق.`;
+
+function showAzkar(type){
+document.getElementById('azM').classList.toggle('on',type=='morning');
+document.getElementById('azE').classList.toggle('on',type=='evening');
+
+document.getElementById('azkarList').innerHTML=
+azkarData[type].map(a=>`
+<div class="card">
+<b>${a[0]}</b>
+<span class="pill">التكرار ${a[2]}</span>
+<p class="duaa">${a[1]}</p>
+</div>
+`).join('');
+}
+
+function loadPrayer(){
+fetch('https://api.aladhan.com/v1/timingsByCity?city=Gaza&country=Palestine&method=5')
+.then(r=>r.json())
+.then(j=>{
+let t=j.data.timings;
+
+document.getElementById('prayerBox').innerHTML=`
+الفجر: ${t.Fajr}<br>
+الشروق: ${t.Sunrise}<br>
+الظهر: ${t.Dhuhr}<br>
+العصر: ${t.Asr}<br>
+المغرب: ${t.Maghrib}<br>
+العشاء: ${t.Isha}
+`;
+})
+.catch(()=>{
+document.getElementById('prayerBox').textContent='مواقيت الصلاة تحتاج إلى اتصال بالإنترنت.';
+});
+}
+
+function renderTasbeeh(){
+document.getElementById('tasbeehBtns').innerHTML=
+zikrs.map(z=>`
+<button class="btn light" onclick="setZikr('${z}')">${z}</button>
+`).join('');
+
+document.getElementById('count').textContent=count;
+}
+
+function setZikr(z){
+count=0;
+document.getElementById('currentZikr').textContent=z;
+document.getElementById('count').textContent=0;
+localStorage.setItem('tasbeeh',0);
+}
+
+function inc(){
+count++;
+document.getElementById('count').textContent=count;
+localStorage.setItem('tasbeeh',count);
+
+if(navigator.vibrate)navigator.vibrate(20);
+}
+
+function resetCount(){
+count=0;
+localStorage.setItem('tasbeeh',0);
+renderTasbeeh();
+}
+
+// تشغيل وتجهيز التطبيق
+renderDuas();
+renderTasbeeh();
+loadSurahs();
+loadPage(curPage);
+loadPrayer();
+updateLastPosUI();
+
+document.addEventListener('keydown',e=>{
+if(e.key=='ArrowLeft')changePage(1);
+if(e.key=='ArrowRight')changePage(-1);
+});
+
+let touchX=0;
+
+document.addEventListener('touchstart',e=>{
+touchX=e.touches[0].clientX;
+});
+
+document.addEventListener('touchend',e=>{
+let dx=e.changedTouches[0].clientX-touchX;
+
+if(dx<-60)changePage(1);
+if(dx>60)changePage(-1);
+});
+
+// تسجيل عامل الخدمة لتجهيز التطبيق للتثبيت
+if('serviceWorker' in navigator){
+window.addEventListener('load',()=>{
+navigator.serviceWorker.register('./service-worker.js')
+.catch(err=>{
+console.warn('تعذر تسجيل Service Worker:',err);
+});
+});
 }
 
 </script>
